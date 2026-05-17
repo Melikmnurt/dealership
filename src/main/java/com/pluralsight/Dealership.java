@@ -21,6 +21,48 @@ public class Dealership {// dealership name
 // create the inventory list
         inventory = new ArrayList<>();
 
+
+    }
+    // returns the dealership name
+    public String getName() {
+        return name;
+    }
+
+    // returns the dealership address
+    public String getAddress() {
+        return address;
+    }
+
+    // returns the dealership phone number
+    public String getPhone() {
+        return phone;
+    }
+
+    // returns the dealership inventory
+    public ArrayList<Vehicle> getAllVehicles() {
+        return inventory;
+    }
+    // updates the dealership name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // updates the dealership address
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    // updates the dealership phone number
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    // adds a vehicle to the dealership inventory
+    public void addVehicle(Vehicle vehicle) {
+        inventory.add(vehicle);
+    }
+    // returns vehicles within a price range
+    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
+        return null;
     }
 }
 
