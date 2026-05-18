@@ -46,6 +46,9 @@ public class UserInterface {
 
             // process the user's menu selection
             switch (command) {
+                case 1:
+                    processGetByPriceRequest();
+                    break;
 
                 case 7:
                     processAllVehiclesRequest();
@@ -58,13 +61,34 @@ public class UserInterface {
 
                 default:
                     System.out.println("Invalid command.");
-
             }
-
         } while (true);
-
     }
+    // searches for vehicles within a price range
+    private void processGetByPriceRequest() {
 
+        // prompt user for minimum price
+        System.out.print("Enter minimum price: ");
+
+        // read minimum price
+        double min = scanner.nextDouble();
+
+        // prompt user for maximum price
+        System.out.print("Enter maximum price: ");
+
+        // read maximum price
+        double max = scanner.nextDouble();
+
+        // clear scanner buffer
+        scanner.nextLine();
+
+        // search for matching vehicles
+        ArrayList<Vehicle> vehicles =
+                dealership.getVehiclesByPrice(min, max);
+
+        // display matching vehicles
+        displayVehicles(vehicles);
+    }
     // initializes the dealership object
     private void init() {
 

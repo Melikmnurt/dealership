@@ -62,7 +62,24 @@ public class Dealership {// dealership name
     }
     // returns vehicles within a price range
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
-        return null;
+
+        // list used to store matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                new ArrayList<>();
+
+        // loop through all vehicles in inventory
+        for (Vehicle vehicle : inventory) {
+
+            // check if the vehicle price is within range
+            if (vehicle.getPrice() >= min &&
+                    vehicle.getPrice() <= max) {
+
+                // add matching vehicle to results list
+                matchingVehicles.add(vehicle);
+            }
+        }
+        // return the matching vehicles
+        return matchingVehicles;
     }
     // returns vehicles by make and model
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
