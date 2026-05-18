@@ -1,0 +1,9 @@
+# Maven target folder
+target/
+
+# IntelliJ files
+.idea/
+*.iml
+
+# Mac system files
+.DS_Store

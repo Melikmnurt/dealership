@@ -42,29 +42,34 @@ public class Dealership {
         return phone;
     }
 
-    // returns the dealership inventory
+    // returns all vehicles in inventory
     public ArrayList<Vehicle> getAllVehicles() {
         return inventory;
     }
 
-    // updates the dealership name
+    // updates dealership name
     public void setName(String name) {
         this.name = name;
     }
 
-    // updates the dealership address
+    // updates dealership address
     public void setAddress(String address) {
         this.address = address;
     }
 
-    // updates the dealership phone number
+    // updates dealership phone number
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    // adds a vehicle to the dealership inventory
+    // adds a vehicle to inventory
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
+    }
+
+    // removes a vehicle from inventory
+    public void removeVehicle(Vehicle vehicle) {
+        inventory.remove(vehicle);
     }
 
     // returns vehicles within a price range
@@ -74,19 +79,17 @@ public class Dealership {
         ArrayList<Vehicle> matchingVehicles =
                 new ArrayList<>();
 
-        // loop through all vehicles in inventory
+        // loop through inventory
         for (Vehicle vehicle : inventory) {
 
-            // check if the vehicle price is within range
+            // check if price is within range
             if (vehicle.getPrice() >= min &&
                     vehicle.getPrice() <= max) {
 
-                // add matching vehicle to results list
                 matchingVehicles.add(vehicle);
             }
         }
 
-        // return the matching vehicles
         return matchingVehicles;
     }
 
@@ -97,22 +100,39 @@ public class Dealership {
         ArrayList<Vehicle> matchingVehicles =
                 new ArrayList<>();
 
-        // loop through all vehicles in inventory
+        // loop through inventory
         for (Vehicle vehicle : inventory) {
-            // check if make and model both match
+
+            // check if make and model match
             if (vehicle.getMake().equalsIgnoreCase(make) &&
                     vehicle.getModel().equalsIgnoreCase(model)) {
 
-                // add matching vehicle to results
                 matchingVehicles.add(vehicle);
             }
-
         }
+
         return matchingVehicles;
     }
+
     // returns vehicles within a year range
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
-        return null;
+
+        // list used to store matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                new ArrayList<>();
+
+        // loop through inventory
+        for (Vehicle vehicle : inventory) {
+
+            // check if year is within range
+            if (vehicle.getYear() >= min &&
+                    vehicle.getYear() <= max) {
+
+                matchingVehicles.add(vehicle);
+            }
+        }
+
+        return matchingVehicles;
     }
 
     // returns vehicles by color
@@ -122,18 +142,37 @@ public class Dealership {
         ArrayList<Vehicle> matchingVehicles =
                 new ArrayList<>();
 
-        // loop through all vehicles in inventory
+        // loop through inventory
         for (Vehicle vehicle : inventory) {
 
-            // check if vehicle color matches the user's request
+            // check if color matches
             if (vehicle.getColor().equalsIgnoreCase(color)) {
 
-                // add matching vehicle to results
                 matchingVehicles.add(vehicle);
             }
         }
 
-        // return matching vehicles
+        return matchingVehicles;
+    }
+
+    // returns vehicles within a mileage range
+    public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
+
+        // list used to store matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                new ArrayList<>();
+
+        // loop through inventory
+        for (Vehicle vehicle : inventory) {
+
+            // check if mileage is within range
+            if (vehicle.getOdometer() >= min &&
+                    vehicle.getOdometer() <= max) {
+
+                matchingVehicles.add(vehicle);
+            }
+        }
+
         return matchingVehicles;
     }
 
@@ -144,28 +183,17 @@ public class Dealership {
         ArrayList<Vehicle> matchingVehicles =
                 new ArrayList<>();
 
-        // loop through all vehicles in inventory
+        // loop through inventory
         for (Vehicle vehicle : inventory) {
 
-            // check if vehicle type matches the user's request
-            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
+            // check if type matches
+            if (vehicle.getVehicleType()
+                    .equalsIgnoreCase(vehicleType)) {
 
-                // add matching vehicle to results
                 matchingVehicles.add(vehicle);
             }
         }
 
-        // return matching vehicles
         return matchingVehicles;
-    }
-
-    // returns vehicles within a mileage range
-    public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
-        return null;
-    }
-
-    // removes a vehicle from inventory
-    public void removeVehicle(Vehicle vehicle) {
-
     }
 }
