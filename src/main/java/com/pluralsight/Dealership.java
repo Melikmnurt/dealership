@@ -1,6 +1,10 @@
 package com.pluralsight;
+
 import java.util.ArrayList;
-public class Dealership {// dealership name
+
+public class Dealership {
+
+    // dealership name
     private String name;
 
     // dealership address
@@ -14,15 +18,15 @@ public class Dealership {// dealership name
 
     // constructor used to create a dealership object
     public Dealership(String name, String address, String phone) {
+
         this.name = name;
         this.address = address;
         this.phone = phone;
 
-// create the inventory list
+        // create the inventory list
         inventory = new ArrayList<>();
-
-
     }
+
     // returns the dealership name
     public String getName() {
         return name;
@@ -42,6 +46,7 @@ public class Dealership {// dealership name
     public ArrayList<Vehicle> getAllVehicles() {
         return inventory;
     }
+
     // updates the dealership name
     public void setName(String name) {
         this.name = name;
@@ -56,10 +61,12 @@ public class Dealership {// dealership name
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     // adds a vehicle to the dealership inventory
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
     }
+
     // returns vehicles within a price range
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
 
@@ -78,18 +85,36 @@ public class Dealership {// dealership name
                 matchingVehicles.add(vehicle);
             }
         }
+
         // return the matching vehicles
         return matchingVehicles;
     }
+
     // returns vehicles by make and model
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
-        return null;
-    }
 
+        // list used to store matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                new ArrayList<>();
+
+        // loop through all vehicles in inventory
+        for (Vehicle vehicle : inventory) {
+            // check if make and model both match
+            if (vehicle.getMake().equalsIgnoreCase(make) &&
+                    vehicle.getModel().equalsIgnoreCase(model)) {
+
+                // add matching vehicle to results
+                matchingVehicles.add(vehicle);
+            }
+
+        }
+        return matchingVehicles;
+    }
     // returns vehicles within a year range
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
         return null;
     }
+
     // returns vehicles by color
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
 
@@ -105,22 +130,40 @@ public class Dealership {// dealership name
 
                 // add matching vehicle to results
                 matchingVehicles.add(vehicle);
-
             }
         }
 
         // return matching vehicles
         return matchingVehicles;
     }
+
+    // returns vehicles by type
+    public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
+
+        // list used to store matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                new ArrayList<>();
+
+        // loop through all vehicles in inventory
+        for (Vehicle vehicle : inventory) {
+
+            // check if vehicle type matches the user's request
+            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
+
+                // add matching vehicle to results
+                matchingVehicles.add(vehicle);
+            }
+        }
+
+        // return matching vehicles
+        return matchingVehicles;
+    }
+
     // returns vehicles within a mileage range
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
         return null;
     }
 
-    // returns vehicles by type
-    public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
-        return null;
-    }
     // removes a vehicle from inventory
     public void removeVehicle(Vehicle vehicle) {
 

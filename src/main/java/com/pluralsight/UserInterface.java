@@ -51,9 +51,16 @@ public class UserInterface {
                 case 1:
                     processGetByPriceRequest();
                     break;
+                case 2:
+                    processGetByMakeModelRequest();
+                    break;
 
                 case 4:
                     processGetByColorRequest();
+                    break;
+
+                case 6:
+                    processGetByTypeRequest();
                     break;
 
                 case 7:
@@ -109,6 +116,45 @@ public class UserInterface {
         // search for matching vehicles
         ArrayList<Vehicle> matchingVehicles =
                 dealership.getVehiclesByColor(color);
+
+        // display matching vehicles
+        displayVehicles(matchingVehicles);
+    }
+
+    // searches for vehicles by type
+    private void processGetByTypeRequest() {
+
+        // prompt user for vehicle type
+        System.out.print("Enter vehicle type: ");
+
+        // read the vehicle type entered by the user
+        String vehicleType = scanner.nextLine();
+
+        // search for matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                dealership.getVehiclesByType(vehicleType);
+
+        // display matching vehicles
+        displayVehicles(matchingVehicles);
+    }
+    // searches for vehicles by make and model
+    private void processGetByMakeModelRequest() {
+
+        // prompt user for vehicle make
+        System.out.print("Enter vehicle make: ");
+
+        // read the make
+        String make = scanner.nextLine();
+
+        // prompt user for vehicle model
+        System.out.print("Enter vehicle model: ");
+
+        // read the model
+        String model = scanner.nextLine();
+
+        // search for matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                dealership.getVehiclesByMakeModel(make, model);
 
         // display matching vehicles
         displayVehicles(matchingVehicles);

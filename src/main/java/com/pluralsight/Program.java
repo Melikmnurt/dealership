@@ -5,7 +5,7 @@ public class Program {
         // create the user interface object
         UserInterface userInterface = new UserInterface();
 
-// start the application
+        // start the application
         userInterface.display();
     }
 }
