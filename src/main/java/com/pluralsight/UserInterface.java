@@ -22,6 +22,7 @@ public class UserInterface {
 
         // main application loop
         do {
+
             // display menu options
             System.out.println("\nWhat do you want to do?");
             System.out.println("1 - Find vehicles within a price range");
@@ -41,13 +42,18 @@ public class UserInterface {
             // read the user's command
             command = scanner.nextInt();
 
-            // clear the scanner buffer
+            // clear scanner buffer
             scanner.nextLine();
 
             // process the user's menu selection
             switch (command) {
+
                 case 1:
                     processGetByPriceRequest();
+                    break;
+
+                case 4:
+                    processGetByColorRequest();
                     break;
 
                 case 7:
@@ -56,14 +62,15 @@ public class UserInterface {
 
                 case 99:
                     System.out.println("Goodbye!");
-                    System.exit(0);
                     return;
 
                 default:
                     System.out.println("Invalid command.");
             }
+
         } while (true);
     }
+
     // searches for vehicles within a price range
     private void processGetByPriceRequest() {
 
@@ -89,6 +96,24 @@ public class UserInterface {
         // display matching vehicles
         displayVehicles(vehicles);
     }
+
+    // searches for vehicles by color
+    private void processGetByColorRequest() {
+
+        // prompt user for vehicle color
+        System.out.print("Enter vehicle color: ");
+
+        // read the color entered by the user
+        String color = scanner.nextLine();
+
+        // search for matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                dealership.getVehiclesByColor(color);
+
+        // display matching vehicles
+        displayVehicles(matchingVehicles);
+    }
+
     // initializes the dealership object
     private void init() {
 
@@ -113,13 +138,12 @@ public class UserInterface {
 
     // helper method used to display a list of vehicles
     private void displayVehicles(ArrayList<Vehicle> vehicles) {
+
         // loop through the vehicle list
         for (Vehicle vehicle : vehicles) {
 
             // display each vehicle
             System.out.println(vehicle);
-
         }
-
     }
 }

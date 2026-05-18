@@ -90,12 +90,28 @@ public class Dealership {// dealership name
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
         return null;
     }
-
     // returns vehicles by color
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
-        return null;
-    }
 
+        // list used to store matching vehicles
+        ArrayList<Vehicle> matchingVehicles =
+                new ArrayList<>();
+
+        // loop through all vehicles in inventory
+        for (Vehicle vehicle : inventory) {
+
+            // check if vehicle color matches the user's request
+            if (vehicle.getColor().equalsIgnoreCase(color)) {
+
+                // add matching vehicle to results
+                matchingVehicles.add(vehicle);
+
+            }
+        }
+
+        // return matching vehicles
+        return matchingVehicles;
+    }
     // returns vehicles within a mileage range
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
         return null;
@@ -110,4 +126,3 @@ public class Dealership {// dealership name
 
     }
 }
-
